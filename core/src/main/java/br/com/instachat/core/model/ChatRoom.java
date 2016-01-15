@@ -1,10 +1,15 @@
 package br.com.instachat.core.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  * POJO Class that represents a chat room in the canvas
@@ -15,10 +20,10 @@ public class ChatRoom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@OneToOne
-	private ChatRoom chatRoom;
-	@OneToOne
-	private User user;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "chatroom_user", joinColumns = {
+			@JoinColumn(name = "chatroom_id") }, inverseJoinColumns = @JoinColumn(name = "user_id") )
+	private Set<User> users;
 
 	public Integer getId() {
 		return id;
@@ -28,20 +33,12 @@ public class ChatRoom {
 		this.id = id;
 	}
 
-	public ChatRoom getChatRoom() {
-		return chatRoom;
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public void setChatRoom(ChatRoom chatRoom) {
-		this.chatRoom = chatRoom;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
 }

@@ -1,0 +1,77 @@
+package br.com.instachat.core.model;
+
+/**
+ * POJO Class that represents a message in the canvas
+ */
+public class Message {
+
+    public enum Type {
+        INCOME(1), OUTGOING(2);
+
+        private Integer value;
+
+        Type(Integer t) {
+
+        }
+
+        public Integer toInteger() {
+            return value;
+        }
+
+    }
+
+    private String content;
+    private String timestamp;
+    private MessageStatus status;
+    private Type type;
+    private Integer chatID;
+    private Integer messageID;
+
+    public Integer getMessageID() {
+        return messageID;
+    }
+
+    public void setMessageID(Integer messageID) {
+        this.messageID = messageID;
+    }
+
+    public Integer getChatID() {
+        return chatID;
+    }
+
+    public void setChatID(Integer chatID) {
+        this.chatID = chatID;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public MessageStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(MessageStatus status) {
+        this.status = status;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+}

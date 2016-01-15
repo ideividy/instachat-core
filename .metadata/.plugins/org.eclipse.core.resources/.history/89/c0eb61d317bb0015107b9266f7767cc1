@@ -1,0 +1,5 @@
+package br.com.instachat.core.model;
+
+public class Message {
+
+}
